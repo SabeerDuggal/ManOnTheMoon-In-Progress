@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel='shortcut icon' href='Images/Gun.png'>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyARPTDbQKCo4cWpoQO09aVFqpipaLXFUqw",
+            authDomain: "manonthemoonproject-2729a.firebaseapp.com",
+            databaseURL: "https://manonthemoonproject-2729a.firebaseio.com",
+            projectId: "manonthemoonproject-2729a",
+            storageBucket: "manonthemoonproject-2729a.appspot.com",
+            messagingSenderId: "133428545369",
+            appId: "1:133428545369:web:cf15ebc23de16d07dd2e48"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+
+    <script src="matter.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="p5.play.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, ">
+    <title>ManOnTheMoon</title>
+</head>
+
+<body style='font-family: Consolas; font-weight: bold; background-color: lightblue;'>
+    <script src="script.js" id='reduce'></script>
+    <audio src="Images/alien_breath.ogg" style="display: none;" autoplay loop>
+    Please use a supported browser
+    </audio>
+
+    <style>
+        #reduce {
+            width: 50%;
+            height: 50%;
+
+        }
+
+        button {
+            border-radius: 50px;
+            font-size: large;
+        }
+        #backblur{
+            -webkit-filter: blur(8px);
+            filter: blur(8px)
+        }
+        #start{
+            background-color: purple;
+            color: white;
+            font-size: small;
+        }
+    </style>
+    <div id = 'welcome' style="width: 100%; height: auto; background-color: lightblue;">
+        <b>Instructions:</b>
+        <ol>
+            <li>Your objective is to <b>collect resources, kill aliens</b> and move on to the next level
+                Top 3 who share their scores will get a special badge of honur for beating 
+                the unbeatable 🏆📛 
+            </li>
+            <li>
+                For:<br>
+                Level -1<br>
+                1. 10 resources and <br>
+                2. 100 kills🤺<br>
+                Level -2<br>
+                1.500 kills🤺<br>
+                2. 20 resources
+                <font color = 'blue'>The Invasion begins</font>
+                <button id = 'start' onclick="gamesate = 1; backToNormal()">Destroy the Invaders!! Start here</button>
+
+
+
+            </li>
+        </ol>
+    </div>
+    <div style="top: 0; position:sticky; background-color: lightblue; width: 100%;" id="backblur">
+        <button style="background-color: purple; color:white; float:left ;width: 15%" onclick="up()">
+            <center>⬆</center>
+        </button>
+        <button style="background-color: purple;  color:white;float:left;width: 15%" onclick="down()">
+            <center>⬇</center>
+        </button><br><br>
+        <button style="background-color: purple;  color:white;float:left;width: 15%" onclick="left()">
+            <center>⬅</center>
+        </button>
+        <button style="background-color: purple;  color:white;float:left;width: 15%" onclick="right()">
+            <center>➡</center>
+        </button>&nbsp;&nbsp;&nbsp;<br>
+
+
+        <div style="float: left;">
+            <button onclick="shoot()">
+                <img src='Images/Gun.png' width="40" height="40">
+            </button>
+        <button onclick  = 'superBullets(); if (gameState < 2) {
+            alert("Fire bullets unlock only at Level 2 🔒")
+        };'>🔥🔥🧨</button>
+        </div>
+        <div style="width: auto; text-align:right" id='display'>
+            <p align = 'center' id = 'green'></p>
+        </div>
+    </div>
+</body>
+
+</html>
